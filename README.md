@@ -9,5 +9,12 @@ This project consists of 2-3 mini-games, mimicking those found in Duck Life 4.  
 
 
 
-Final 2-Week Sprint
+Final 2-Week Sprint Goals
 
+Instruction screen:
+- The menu screen will have a button labeled “Instructions” or “How to play”
+- A UI panel will pop up showing the controls and ideas of each game
+- The panel will be switched into 3 subsections for the information to be displayed
+UX etc:
+- The player experience will be improved by adding background music and sound effects to the second two games
+- The jump for the player in the Jumping game will be modified to have increased gravity upon releasing a jump key
