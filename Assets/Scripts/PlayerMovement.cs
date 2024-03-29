@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         isAlive = true;
         //StartCoroutine("SpawnPlatforms");
         if (SceneManager.GetActiveScene().name.Equals("Dropping")) {
-            for (int i=0; i<500; i++) {
+            for (int i=0; i<300; i++) {
                 spawnHeight -= 5.5f;
                 Vector3 temp = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y+spawnHeight, spawnPoint.transform.position.z);
                 Instantiate(platforms[Random.Range(0, platforms.Length-1)], temp, Quaternion.identity);

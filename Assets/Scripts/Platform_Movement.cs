@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Platform_Movement : MonoBehaviour
 {
-    public static float ySpeed = 0.05f;
+    public static float ySpeed = 0.1f;
     private GameObject player;
     public GameObject Particles;
     public PlayerMovement pm;

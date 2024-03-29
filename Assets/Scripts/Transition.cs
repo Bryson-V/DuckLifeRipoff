@@ -21,6 +21,10 @@ public class Transition : MonoBehaviour
     {
         StartCoroutine("menuTransition");
     }
+    public void jumpScreen()
+    {
+        StartCoroutine("jumpingTransition");
+    }
 
     IEnumerator menuTransition() {
         src.clip = uiClick;
@@ -39,5 +43,11 @@ public class Transition : MonoBehaviour
         src.Play();
         yield return new WaitForSeconds(0.3f);
         SceneManager.LoadScene("Dropping");
+    }
+    IEnumerator jumpingTransition() {
+        src.clip = uiClick;
+        src.Play();
+        yield return new WaitForSeconds(0.3f);
+        SceneManager.LoadScene("Jumping");
     }
 }

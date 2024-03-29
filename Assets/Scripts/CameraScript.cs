@@ -18,7 +18,7 @@ public class CameraScript : MonoBehaviour
             }
         if(SceneManager.GetActiveScene().name.Equals("Jumping"))
             {
-                cameraT.position = new Vector3(transform.position.x, 0, cameraT.position.z);
+                cameraT.position = new Vector3(transform.position.x+4f, 0, cameraT.position.z);
             }
 
     }
