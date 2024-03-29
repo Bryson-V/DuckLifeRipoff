@@ -22,5 +22,4 @@ IEnumerator colorChange()
         text.color = rand;
     }
 }
-//change the transparency, as an example
 }

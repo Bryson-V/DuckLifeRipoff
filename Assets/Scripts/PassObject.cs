@@ -17,17 +17,19 @@ public class PassObject : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(!AMIDEAD && transform.position.y < player.transform.position.y && SceneManager.GetActiveScene().name.Equals("Dodging"))
-        {
-            AMIDEAD = true;
-            Score.platformsPassed++;
-            StartCoroutine("DieASlowDeath");
-        }
-        if(!AMIDEAD && transform.position.x < player.transform.position.x && SceneManager.GetActiveScene().name.Equals("Jumping"))
-        {
-            AMIDEAD = true;
-            Score.platformsPassed++;
-            StartCoroutine("DieASlowDeath");
+        if (player != null) {
+            if(!AMIDEAD && transform.position.y < player.transform.position.y && SceneManager.GetActiveScene().name.Equals("Dodging"))
+            {
+                AMIDEAD = true;
+                Score.platformsPassed++;
+                StartCoroutine("DieASlowDeath");
+            }
+            if(!AMIDEAD && transform.position.x < player.transform.position.x && SceneManager.GetActiveScene().name.Equals("Jumping"))
+            {
+                AMIDEAD = true;
+                Score.platformsPassed++;
+                StartCoroutine("DieASlowDeath");
+            }
         }
     }
 

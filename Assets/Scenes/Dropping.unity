@@ -1429,8 +1429,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1402517676}
-  moveSpeed: 0.25
-  increase: 0.001
+  moveSpeed: 0.3
+  increase: 0.003
   platforms:
   - {fileID: 1553786269601018151, guid: ea55b55a0697ff54ea35ff4d7537b24b, type: 3}
   - {fileID: 6128166932373067535, guid: 07f6693f031aa5d4fa2a47af6234e0fc, type: 3}
