@@ -9,7 +9,7 @@ public class Transition : MonoBehaviour
     public AudioSource src;
     public AudioClip uiClick;
 
-    // Start is called before the first frame update
+
     public void dropScreen()
     {
         StartCoroutine("dropppingTransition");

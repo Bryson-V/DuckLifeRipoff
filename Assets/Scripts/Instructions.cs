@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Instructions : MonoBehaviour
@@ -8,30 +9,49 @@ public class Instructions : MonoBehaviour
     private int Gamenumber=1;
     public TMP_Text Title, rules;
     public GameObject Panel;
+    public Sprite[] images;
+    public Image spriteImage1;
 
-    // Start is called before the first frame update
     public void Appear()
     {
         Panel.SetActive(true);
     }
+
     public void Left()
     {
         Gamenumber--;
         if(Gamenumber==0)
             Gamenumber=3;
+        SetInstructionImage(Gamenumber);
     }
+
     public void Right()
     {
         Gamenumber++;
         if(Gamenumber==4)
             Gamenumber=1;
+        SetInstructionImage(Gamenumber);
     }
+
+    public void SetInstructionImage(int index) {
+        if (Gamenumber == 1) {
+            spriteImage1.sprite = images[0];
+        } else if (Gamenumber == 2) {
+            spriteImage1.sprite = images[1];
+        } else if (Gamenumber == 3) {
+            spriteImage1.sprite = images[2];
+        } else {
+            Debug.Log("ur ***** code dusent wurk");
+        }
+    }
+
     void Update(){
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Panel.SetActive(false);
         }
     }
+
     void FixedUpdate(){
         if(Gamenumber==1)
         {

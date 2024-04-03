@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6969386084664420206}
   - component: {fileID: 6969386084664420205}
   - component: {fileID: 6969386084664420204}
+  - component: {fileID: 8478428859542371037}
   m_Layer: 0
   m_Name: Goomba Tower
   m_TagString: badgoi
@@ -175,3 +176,15 @@ PolygonCollider2D:
       - {x: 0.22999999, y: -1.105}
       - {x: 0.25, y: -0.995}
       - {x: 0.29999998, y: -0.755}
+--- !u!114 &8478428859542371037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6969386084664420201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61989d9bc5eb411499e5e549b43c42f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
