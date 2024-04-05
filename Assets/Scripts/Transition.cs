@@ -9,7 +9,7 @@ public class Transition : MonoBehaviour
     public AudioSource src;
     public AudioClip uiClick;
 
-
+    //Calls a method that shifts screen which user is on
     public void dropScreen()
     {
         StartCoroutine("dropppingTransition");
@@ -25,7 +25,7 @@ public class Transition : MonoBehaviour
     {
         StartCoroutine("jumpingTransition");
     }
-
+    //Create a noise for button clicks and changes scene
     IEnumerator menuTransition() {
         src.clip = uiClick;
         src.Play();

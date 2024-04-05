@@ -13,19 +13,19 @@ public class Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //sets player to alive and starts routine
         PlayerMovement.isAlive=true;
         StartCoroutine("SpawnObstacles");
     }
 
     IEnumerator SpawnObstacles() {
-        Debug.Log("hi");
+        //After a certain amount of time, calls for a spawn of an object
         while (PlayerMovement.isAlive) {
-            Debug.Log("playeralive");
             yield return new WaitForSeconds(spawnSpeed);
             StartCoroutine("SpawnWarning");
         }
     }
-
+    //Spawns warning triangle, then waits until object is spawned, and disappears
     IEnumerator SpawnWarning() {
         transform.position = new Vector3(Random.Range(-bounds,bounds), transform.position.y, 0);
         Vector3 temp = transform.position;
@@ -40,6 +40,7 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Constantly increases how fast objects spawn
         spawnSpeed -= 0.0001f;
     }
 }

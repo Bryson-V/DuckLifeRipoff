@@ -24,16 +24,16 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         isAlive = true;
-        //StartCoroutine("SpawnPlatforms");
+        //Spawns 300 platforms below player using an array to randomize which platform spawns
         if (SceneManager.GetActiveScene().name.Equals("Dropping")) {
             for (int i=0; i<300; i++) {
                 spawnHeight -= 5.5f;
                 Vector3 temp = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y+spawnHeight, spawnPoint.transform.position.z);
                 Instantiate(platforms[Random.Range(0, platforms.Length-1)], temp, Quaternion.identity);
             }
-        } //else if (SceneManager.GetActiveScene().name.Equals("Dodging")) {}
+        }
     }
-
+    //Sound for passing object and resets player landing
     public void BoomSFX() {
         landed = false;
         src.clip = Explode; 
@@ -43,11 +43,14 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+
         if(!landed && rb.velocity.y >= 0) {
+            //Plays quacking noise whenever player lands
             landed = true;
             src.clip = Quack;
             src.Play();
         }
+        //Allows for playermovement and sets velocity to 0 if player stops moving
         if (Input.GetAxis("Horizontal") != 0) {
             xInput = Input.GetAxis("Horizontal");
 
@@ -55,14 +58,14 @@ public class PlayerMovement : MonoBehaviour
         } else {
             rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
         }
-
-        if (Input.GetKeyDown("r")) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+        //reset button for testing purposes
+        // if (Input.GetKeyDown("r")) {
+        //     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // }
         Platform_Movement.ySpeed += increase;
         Flip();
     }
-
+    //Flips player sprite if moving in opposite direction
     public void Flip() {
         if (Input.GetAxis("Horizontal") > 0) {
             transform.localScale = new Vector3(-0.3f,.3f,0);
@@ -72,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
     }       
 
 
-
+    //Checks for player collision to top of screen to end game
     private void OnTriggerEnter2D(Collider2D c) {
         if (c.gameObject.tag.Equals("badgoi"))
         {
@@ -83,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     IEnumerator DeathSound(){
-        
+        //Plays a noise for player dying
         int temp= Random.Range(1,6);
         if(temp<5)
             src.clip = Death1;
@@ -94,12 +97,14 @@ public class PlayerMovement : MonoBehaviour
         scoreTotal.SetActive(false);
         scorePlatforms.SetActive(false);
         yield return new WaitForSeconds(0.3f);
+        //Changes text to give player score
         if(SceneManager.GetActiveScene().name.Equals("Dropping")){
             deathScore.text="Score: " + Score.value.ToString() + "\n Platforms Passed: " + Score.platformsPassed.ToString();       
         } 
         if(SceneManager.GetActiveScene().name.Equals("Dodging")){
             deathScore.text="Score: " + Score.value.ToString() + "\n # of Objects Dodged: " + Score.platformsPassed.ToString();       
         }           
+        //opens Game Over SCreen and removes player object
         panel.SetActive(true);
         gameObject.SetActive(false);
 

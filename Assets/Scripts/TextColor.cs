@@ -11,11 +11,13 @@ public class TextColor : MonoBehaviour
  
     void Start()
     {
+        //starts IEnumerator
         StartCoroutine("colorChange");
     }
  
 IEnumerator colorChange()
 {
+    //Changes color of text randomly at an interval of .15 seconds  
     while(true){
         yield return new WaitForSeconds(waitTimer);
         Color rand=new Color(Random.value,Random.value,Random.value);

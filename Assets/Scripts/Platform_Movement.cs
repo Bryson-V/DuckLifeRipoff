@@ -12,6 +12,7 @@ public class Platform_Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Looks for player and Particles in scene.  Sets initial speed
         ySpeed=.05f;
         player = GameObject.Find("Player");
         pm = player.GetComponent<PlayerMovement>();
@@ -21,6 +22,7 @@ public class Platform_Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Checks for if platform has passed player and destroys object, creating an explosion effect.
         if (transform.position.y > player.transform.position.y-0.85f) {
             Score.platformsPassed++;
             Score.value += 100f; 
@@ -33,6 +35,7 @@ public class Platform_Movement : MonoBehaviour
     }
     void FixedUpdate()
     {
+        //Moves platform up at a certain rate.
         transform.Translate(Vector3.up * ySpeed * Time.fixedDeltaTime);
     }
 

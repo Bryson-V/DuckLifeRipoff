@@ -7,9 +7,9 @@ public class PassObject : MonoBehaviour
 {
     private GameObject player;
     private bool AMIDEAD = false;
-    // Start is called before the first frame update
     void Start()
     {
+        //Checks objects in scene to find player
         player = GameObject.Find("Player");
 
     }
@@ -17,6 +17,7 @@ public class PassObject : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Checks for if platform passes player and calls method to despawn
         if (player != null) {
             if(!AMIDEAD && transform.position.y < player.transform.position.y && SceneManager.GetActiveScene().name.Equals("Dodging"))
             {
@@ -34,6 +35,7 @@ public class PassObject : MonoBehaviour
     }
 
     private IEnumerator DieASlowDeath() {
+        //Destroys Gameobject after a certain amount of time has passed.
         yield return new WaitForSecondsRealtime(3f);
         Destroy(gameObject);
 

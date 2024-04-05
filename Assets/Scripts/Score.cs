@@ -15,6 +15,7 @@ public class Score : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Sets two scores to 0 at start of each scene.  Starts IEnumerator for increasing score constantly
         value=0;
         platformsPassed=0;
         taco.text="Hello World";
@@ -29,6 +30,7 @@ public class Score : MonoBehaviour
 
     public IEnumerator countdown() {
         while(true) {
+            //Increases score by 1 every .01 seconds.  Changes the amount of platforms passed to current value, changed in other scripts.
             yield return new WaitForSeconds(0.01f);
             value += 1f;
             taco.text = value.ToString();

@@ -11,12 +11,12 @@ public class Instructions : MonoBehaviour
     public GameObject Panel;
     public Sprite[] images;
     public Image spriteImage1;
-
+    //Method called to make panel appear
     public void Appear()
     {
         Panel.SetActive(true);
     }
-
+    //Changes an int to tell which game instruction will appear
     public void Left()
     {
         Gamenumber--;
@@ -24,7 +24,6 @@ public class Instructions : MonoBehaviour
             Gamenumber=3;
         SetInstructionImage(Gamenumber);
     }
-
     public void Right()
     {
         Gamenumber++;
@@ -32,8 +31,9 @@ public class Instructions : MonoBehaviour
             Gamenumber=1;
         SetInstructionImage(Gamenumber);
     }
-
+    //Changes image posted on help screen to match game instructions
     public void SetInstructionImage(int index) {
+
         if (Gamenumber == 1) {
             spriteImage1.sprite = images[0];
         } else if (Gamenumber == 2) {
@@ -41,17 +41,17 @@ public class Instructions : MonoBehaviour
         } else if (Gamenumber == 3) {
             spriteImage1.sprite = images[2];
         } else {
-            Debug.Log("ur ***** code dusent wurk");
+            Debug.Log("Code Error");
         }
     }
-
+    //Closes help screen
     void Update(){
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Panel.SetActive(false);
         }
     }
-
+    //Displays text based on which instruction player is on
     void FixedUpdate(){
         if(Gamenumber==1)
         {

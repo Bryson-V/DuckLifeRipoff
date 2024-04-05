@@ -23,6 +23,7 @@ public class PlayerJump : MonoBehaviour{
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        //Spawns 500 Obstacles and randomizes which one spawns from platforms[]
         for (int i=0; i<500; i++) {
             spawnHeight += 15;
             Vector3 temp = new Vector3(spawnPoint.transform.position.x+spawnHeight, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
@@ -33,6 +34,7 @@ public class PlayerJump : MonoBehaviour{
 
     void Update() 
     {
+        //Takes in Keyboard inputs to determine how high the player Jumps.  Checks for multiple presses by restricting to one jump until ground is touched
         if (Input.GetKeyDown("1") && grounded) {
             grounded = false;
             rb.velocity = new Vector3(rb.velocity.x, jumpHeight1, 0f); 
@@ -50,6 +52,7 @@ public class PlayerJump : MonoBehaviour{
             grounded = false;
             rb.velocity = new Vector3(rb.velocity.x, jumpHeight4, 0f); 
         }
+        //Allows for the player to fall quickly using a Mouse button input
         if(Input.GetMouseButtonDown(0))
             rb.velocity = new Vector3(rb.velocity.x , fallspeed, 0f);
         
@@ -58,9 +61,11 @@ public class PlayerJump : MonoBehaviour{
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Constant Movement of Player
         transform.Translate(moveSpeed, 0,0);
     }
     private void OnTriggerEnter2D(Collider2D c) {
+        //Trigger that is called when player runs into an obstacle
         if (c.gameObject.tag.Equals("badgoi"))
         {
             StartCoroutine("DeathSound");
@@ -68,6 +73,7 @@ public class PlayerJump : MonoBehaviour{
     }
     private void OnCollisionEnter2D(Collision2D c)
     {
+        //Checks for if player is on ground
         if (c.gameObject.tag.Equals("ground"))
         {
             grounded=true;
@@ -77,7 +83,7 @@ public class PlayerJump : MonoBehaviour{
     IEnumerator DeathSound(){
         
         int temp= Random.Range(1,6);
-
+        //Deathsounds that can play on player death
         if(temp<5)
             src.clip = Death1;
         else
@@ -86,6 +92,7 @@ public class PlayerJump : MonoBehaviour{
         src.Play();
         scoreTotal.SetActive(false);
         scorePlatforms.SetActive(false);
+        //Gives Playerscore depending on which game was played 
         if(SceneManager.GetActiveScene().name.Equals("Dropping")){
             deathScore.text="Score: " + Score.value.ToString() + "\n Platforms Passed: " + Score.platformsPassed.ToString();       
         } 
@@ -94,7 +101,8 @@ public class PlayerJump : MonoBehaviour{
         }         
         if(SceneManager.GetActiveScene().name.Equals("Jumping")){
             deathScore.text="Score: " + Score.value.ToString() + "\n # of Objects Passed: " + Score.platformsPassed.ToString();       
-        }       
+        }      
+        //Game Over Screen appears and player object disappears
         panel.SetActive(true);
         yield return new WaitForSeconds(0.3f);
         gameObject.SetActive(false);
