@@ -13,7 +13,7 @@ Unity is very open in how it allows for users to have a variety of options in ho
 Download
 ----
 Download link found here:
-[I'm an inline-style link with title]([https://www.google.co](https://drive.google.com/file/d/1tA_AWNY9zESV4yXzB4WWzfUaUPYa2iJH/view?usp=sharing) "Google's Homepage")
+https://drive.google.com/file/d/1tA_AWNY9zESV4yXzB4WWzfUaUPYa2iJH/view?usp=sharing
 
 
 
